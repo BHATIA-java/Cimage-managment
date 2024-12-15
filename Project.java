@@ -1,8 +1,9 @@
 package university_managment_system;
 import javax.swing. *;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Project extends JFrame{
+public class Project extends JFrame implements ActionListener {
     Project(){
         setSize(1540,850);//use to set the screen size to the frame
 
@@ -18,7 +19,7 @@ public class Project extends JFrame{
 
 //new information menu
         JMenu newInformation = new JMenu("Information");//creating the menu that going to show on menu bar
-        newInformation.setForeground(Color.BLUE);//setting the color of menu
+        newInformation.setForeground(Color.blue);//setting the color of menu
         menuBar.add(newInformation);//adding menu to the menu bar
 //faculty information   menu
         JMenuItem facultyinfo = new JMenuItem("New Faculty Information");//creatin menu item that show on menu
@@ -44,7 +45,7 @@ public class Project extends JFrame{
 
 //Leave menu
         JMenu leave = new JMenu("Apply Leave");//creating the menu that going to show on menu bar
-        leave.setForeground(Color.BLUE);//setting the color of menu
+        leave.setForeground(Color.blue);//setting the color of menu
         menuBar.add(leave);//adding menu to the menu bar
 //faculty Details   menuItem
         JMenuItem facultyleave = new JMenuItem("  Faculty Leave");//creatin menu item that show on menu
@@ -57,7 +58,7 @@ public class Project extends JFrame{
 
 //Leave Deatils menu
         JMenu leaveDetails = new JMenu("Leave Detils");//creating the menu that going to show on menu bar
-        leave.setForeground(Color.red);//setting the color of menu
+        leaveDetails.setForeground(Color.red);//setting the color of menu
         menuBar.add(leaveDetails);//adding menu to the menu bar
 //faculty Details   menuItem
         JMenuItem facultyleavedetails = new JMenuItem("  Faculty Leave Details");//creatin menu item that show on menu
@@ -81,11 +82,90 @@ public class Project extends JFrame{
         examresult.setBackground(Color.WHITE);//setting the color of student leave Detials
         exam.add(examresult);//adding menuitem to the menu
 
+
+//update information menu
+        JMenu updateInformation = new JMenu("Update Information");//creating the menu that going to show on menu bar
+        updateInformation.setForeground(Color.RED);
+        menuBar.add(updateInformation);
+//faculty information   menu
+        JMenuItem updatefacultyinfo = new JMenuItem("Update Faculty Information");
+        facultyinfo.setBackground(Color.WHITE);
+        updateInformation.add(updatefacultyinfo);
+//student information   menu
+        JMenuItem updatestudentinfo = new JMenuItem("Update Student Information");
+        updatestudentinfo.setBackground(Color.WHITE);
+        updateInformation.add(updatestudentinfo);
+
+
+//fee information menu
+        JMenu fee = new JMenu("Fee Details");//creating the menu that going to show on menu bar
+        fee.setForeground(Color.blue);
+        menuBar.add(fee);
+//faculty information   menu
+        JMenuItem feestructure = new JMenuItem("Fee Structure");
+        feestructure.setBackground(Color.white);
+        fee.add(feestructure);
+//student information   menu
+        JMenuItem feeform = new JMenuItem("Fee Form");
+        studentinfo.setBackground(Color.WHITE);
+        fee.add(feeform);
+
+//utility menu
+        JMenu utility = new JMenu("Utility");//creating the menu that going to show on menu bar
+        utility.setForeground(Color.red);
+        menuBar.add(utility);
+//faculty information   menu
+        JMenuItem notepad = new JMenuItem("Notepad");
+        notepad.setBackground(Color.WHITE);
+        notepad.addActionListener( this);
+        utility.add(notepad);
+//student information   menu
+        JMenuItem calculator = new JMenuItem("Calculator");
+        calculator.setBackground(Color.WHITE);
+        calculator.addActionListener(this);
+        utility.add(calculator);
+
+//Exit menu
+        JMenu exit = new JMenu("Exit");//creating the menu that going to show on menu bar
+        exit.setForeground(Color.blue);
+        menuBar.add(exit);
+//faculty information   menu
+        JMenuItem ex = new JMenuItem("Exit");
+        ex.setBackground(Color.WHITE);
+        ex.addActionListener(this);
+        exit.add(ex);
+
         setJMenuBar(menuBar);//setting the menu bar on the frame
 
         setVisible(true);//use to make the frame visible
         
     }
+    //adding the actionlistner
+    @SuppressWarnings("deprecation")//using outdate code
+
+public void actionPerformed(ActionEvent ae) {
+        String msg= ae.getActionCommand(); //that compares the click basis on the string cpmparison
+        if (msg.equals("Exit")){
+                setVisible(false);
+        }
+        else if (msg.equals("Calculator")){
+                try{
+                        Runtime.getRuntime().exec("calc.exe");
+                }catch(Exception E){
+
+                }
+        }
+        else if (msg.equals("Notepad")){
+                try{
+                        Runtime.getRuntime().exec("notepad.exe");
+                }catch(Exception E){
+
+                }
+
+        }
+
+    }
+
     public static void main(String[] args) {
         new Project();
         
