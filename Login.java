@@ -62,45 +62,37 @@ public class Login extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == login) {
-            //storing the inserted values
             String username = tfusername.getText();
             String password = new String(tfpassword.getPassword());
-
-            //storing the values from database
-            String query="select * from login where username'" + username + "'and password'" + password+ "'";
-
-            try{
+    
+            String query = "SELECT * FROM login WHERE username = '" + username + "' AND password = '" + password + "'";
+            System.out.println("Query: " + query);
+    
+            try {
                 Conn c = new Conn();
-               ResultSet rs= c.s.executeQuery(query);
-
-               if(rs.next()){
-                setVisible(false);
-                new Project();
-               }
-               else{
-                JOptionPane.showMessageDialog(null, "invalid Username or password");
-                setVisible(false);
-               }
-            }catch(SQLException e){
+                ResultSet rs = c.s.executeQuery(query);
+    
+                if (rs.next()) {
+                    System.out.println("Login Successful!");
+                    setVisible(false);
+                    new Project(); // Move to the next window
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password");
+                    tfusername.setText("");  
+                    tfpassword.setText("");  
+                }
+            } catch (SQLException e) {
+                System.out.println("SQL Exception Occurred!");
                 e.printStackTrace();
             }
-
-            /*
-            // Example validation
-            if (username.equals("gaurav") && password.equals("pass")) {
-                JOptionPane.showMessageDialog(this, "Login successful");
-                new Project();
-                setVisible(false); 
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid details");
-            }*/
         } else if (ae.getSource() == cancel) {
-           
             setVisible(false);
         }
     }
-
+    
     public static void main(String[] args) {
+
+        
         new Login();
     }
 }

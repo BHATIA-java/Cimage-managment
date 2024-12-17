@@ -9,10 +9,16 @@ public class Conn {
     Conn(){
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/cimagemanagment","root","Bhatia@9939");
             s=c.createStatement();
+            System.out.println("Database Connected Successfully!"); // Confirmation
+
         }
-        catch(Exception e){e.printStackTrace();}
+        catch(Exception e){
+            System.out.println("Database Connection Failed!");
+
+            e.printStackTrace();
+        }
      }
 }
