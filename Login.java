@@ -3,6 +3,7 @@ package university_managment_system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java. sql.*;
 
 public class Login extends JFrame implements ActionListener {
     JButton login, cancel;
@@ -61,17 +62,38 @@ public class Login extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == login) {
+            //storing the inserted values
             String username = tfusername.getText();
             String password = new String(tfpassword.getPassword());
 
+            //storing the values from database
+            String query="select * from login where username'" + username + "'and password'" + password+ "'";
+
+            try{
+                Conn c = new Conn();
+               ResultSet rs= c.s.executeQuery(query);
+
+               if(rs.next()){
+                setVisible(false);
+                new Project();
+               }
+               else{
+                JOptionPane.showMessageDialog(null, "invalid Username or password");
+                setVisible(false);
+               }
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+
+            /*
             // Example validation
             if (username.equals("gaurav") && password.equals("pass")) {
                 JOptionPane.showMessageDialog(this, "Login successful");
                 new Project();
-                setVisible(false); // Hide the login frame when successful login
+                setVisible(false); 
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid credentials");
-            }
+                JOptionPane.showMessageDialog(this, "Invalid details");
+            }*/
         } else if (ae.getSource() == cancel) {
            
             setVisible(false);
