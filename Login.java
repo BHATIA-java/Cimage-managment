@@ -81,6 +81,7 @@ public class Login extends JFrame implements ActionListener {
                     tfusername.setText("");  
                     tfpassword.setText("");  
                 }
+                c.s.close();
             } catch (SQLException e) {
                 System.out.println("SQL Exception Occurred!");
                 e.printStackTrace();
