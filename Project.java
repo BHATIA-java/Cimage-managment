@@ -37,13 +37,15 @@ public class Project extends JFrame implements ActionListener {
         details.setForeground(Color.RED);//setting the color of menu
         menuBar.add(details);//adding menu to the menu bar
 //faculty Details   menuItem
-        JMenuItem facultyDetails = new JMenuItem(" View Faculty Details");//creatin menu item that show on menu
+        JMenuItem facultyDetails = new JMenuItem("View Faculty Details");//creatin menu item that show on menu
         facultyDetails.setBackground(Color.WHITE);//setting the color of faculty details
         details.add(facultyDetails);//adding menuitem to the menu
+        facultyDetails.addActionListener(this);
 //student details   menu
-        JMenuItem studentDetails = new JMenuItem(" View Student Details");//creatin menu item that show on menu
+        JMenuItem studentDetails = new JMenuItem("View Student Details");//creatin menu item that show on menu
         studentDetails.setBackground(Color.WHITE);//setting the color of student detials
         details.add(studentDetails);//adding menuitem to the menu
+        studentDetails.addActionListener(this);
 
 //Leave menu
         JMenu leave = new JMenu("Apply Leave");//creating the menu that going to show on menu bar
@@ -170,7 +172,12 @@ public void actionPerformed(ActionEvent ae) {
             new AddTeacher();
         } else if (msg.equals("New Student Information")) {
             new AddStudent();
+        } else if (msg.equals("View Faculty Details")) {
+            new FacultyDetails();
+        } else if (msg.equals("View Student Details")) {
+            new StudentDetails();
         }
+
 
     }
 
