@@ -152,6 +152,7 @@ public void actionPerformed(ActionEvent ae) {
                 try{
                         Runtime.getRuntime().exec("calc.exe");
                 }catch(Exception E){
+                    E.printStackTrace();
 
                 }
         }
@@ -159,6 +160,7 @@ public void actionPerformed(ActionEvent ae) {
                 try{
                         Runtime.getRuntime().exec("notepad.exe");
                 }catch(Exception E){
+                    E.printStackTrace();
 
                 }
 
