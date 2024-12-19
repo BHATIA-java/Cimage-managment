@@ -52,11 +52,11 @@ public class Project extends JFrame implements ActionListener {
         leave.setForeground(Color.blue);//setting the color of menu
         menuBar.add(leave);//adding menu to the menu bar
 //faculty Details   menuItem
-        JMenuItem facultyleave = new JMenuItem("  Faculty Leave");//creatin menu item that show on menu
+        JMenuItem facultyleave = new JMenuItem("Faculty Leave");//creatin menu item that show on menu
         facultyleave.setBackground(Color.WHITE);//setting the color of faculty leave
         leave.add(facultyleave);//adding menuitem to the menu
 //student details   menu
-        JMenuItem studentLeave = new JMenuItem("  Student Leave ");//creatin menu item that show on menu
+        JMenuItem studentLeave = new JMenuItem("Student Leave");//creatin menu item that show on menu
         studentLeave.setBackground(Color.WHITE);//setting the color of student leave
         leave.add(studentLeave);//adding menuitem to the menu
 
@@ -65,11 +65,11 @@ public class Project extends JFrame implements ActionListener {
         leaveDetails.setForeground(Color.red);//setting the color of menu
         menuBar.add(leaveDetails);//adding menu to the menu bar
 //faculty Details   menuItem
-        JMenuItem facultyleavedetails = new JMenuItem("  Faculty Leave Details");//creatin menu item that show on menu
+        JMenuItem facultyleavedetails = new JMenuItem("Faculty Leave Details");//creatin menu item that show on menu
         facultyleavedetails.setBackground(Color.WHITE);//setting the color of faculty leave Details
         leaveDetails.add(facultyleavedetails);//adding menuitem to the menu
 //student details   menu
-        JMenuItem studentLeaveDetails = new JMenuItem("  Student Leave Details");//creatin menu item that show on menu
+        JMenuItem studentLeaveDetails = new JMenuItem("Student Leave Details");//creatin menu item that show on menu
         studentLeaveDetails.setBackground(Color.WHITE);//setting the color of student leave Detials
         leaveDetails.add(studentLeaveDetails);//adding menuitem to the menu
 
@@ -176,6 +176,10 @@ public void actionPerformed(ActionEvent ae) {
             new FacultyDetails();
         } else if (msg.equals("View Student Details")) {
             new StudentDetails();
+        } else if (msg.equals("Faculty Leave")) {
+            new TeacherLeave();
+        } else if (msg.equals("Student Leave")) {
+            new StudentLeave();
         }
 
 
