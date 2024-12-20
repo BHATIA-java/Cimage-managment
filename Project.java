@@ -56,7 +56,7 @@ public class Project extends JFrame implements ActionListener {
         facultyleave.setBackground(Color.WHITE);//setting the color of faculty leave
         leave.add(facultyleave);//adding menuitem to the menu
 //student details   menu
-        JMenuItem studentLeave = new JMenuItem("Student Leave");//creatin menu item that show on menu
+        JMenuItem studentLeave = new JMenuItem("Student Leave");//creating menu item that show on menu
         studentLeave.setBackground(Color.WHITE);//setting the color of student leave
         leave.add(studentLeave);//adding menuitem to the menu
 
