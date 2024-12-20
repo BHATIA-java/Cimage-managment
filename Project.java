@@ -54,10 +54,12 @@ public class Project extends JFrame implements ActionListener {
 //faculty Details   menuItem
         JMenuItem facultyleave = new JMenuItem("Faculty Leave");//creatin menu item that show on menu
         facultyleave.setBackground(Color.WHITE);//setting the color of faculty leave
+        facultyleave.addActionListener(this);
         leave.add(facultyleave);//adding menuitem to the menu
 //student details   menu
         JMenuItem studentLeave = new JMenuItem("Student Leave");//creating menu item that show on menu
         studentLeave.setBackground(Color.WHITE);//setting the color of student leave
+        studentLeave.addActionListener(this);
         leave.add(studentLeave);//adding menuitem to the menu
 
 //Leave Deatils menu
@@ -67,10 +69,12 @@ public class Project extends JFrame implements ActionListener {
 //faculty Details   menuItem
         JMenuItem facultyleavedetails = new JMenuItem("Faculty Leave Details");//creatin menu item that show on menu
         facultyleavedetails.setBackground(Color.WHITE);//setting the color of faculty leave Details
+        facultyleavedetails.addActionListener(this);
         leaveDetails.add(facultyleavedetails);//adding menuitem to the menu
 //student details   menu
         JMenuItem studentLeaveDetails = new JMenuItem("Student Leave Details");//creatin menu item that show on menu
         studentLeaveDetails.setBackground(Color.WHITE);//setting the color of student leave Detials
+        studentLeaveDetails.addActionListener(this);
         leaveDetails.add(studentLeaveDetails);//adding menuitem to the menu
 
 //Exam  menu
@@ -177,13 +181,18 @@ public void actionPerformed(ActionEvent ae) {
         } else if (msg.equals("View Student Details")) {
             new StudentDetails();
         } else if (msg.equals("Faculty Leave")) {
+            System.out.println("faculty leave clicked");
             new TeacherLeave();
         } else if (msg.equals("Student Leave")) {
             new StudentLeave();
+        }else if (msg.equals("Faculty Leave Details")) {
+        new TeacherLeaveDetails();
+        } else if (msg.equals("Student Leave Details")) {
+        new StudentLeaveDetails();
         }
 
 
-    }
+}
 
     public static void main(String[] args) {
         new Project();
