@@ -9,12 +9,12 @@ import java.sql.ResultSet;
 
 public class DisplayMarks extends JFrame implements ActionListener {
     JTextField search;
-    JButton resultbutton, backbutton;
+    JButton resultbutton,backbutton;
     JTable table;
 
-    DisplayMarks() {
-        setSize(1000, 475);
-        setLocation(300, 100);
+    DisplayMarks(){
+        setSize(1000,475);
+        setLocation(300,100);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
 
@@ -24,14 +24,14 @@ public class DisplayMarks extends JFrame implements ActionListener {
         heading.setFont(new Font("Tahoma", Font.BOLD, 30));
         add(heading);
 
-        JLabel lblrollno = new JLabel("Select Roll No");
-        lblrollno.setBounds(60, 100, 120, 30);
-        lblrollno.setFont(new Font("serif", Font.BOLD, 15));
+        JLabel lblrollno= new JLabel("Select Roll No");
+        lblrollno.setBounds(60,100,120,30);
+        lblrollno.setFont(new Font("serif",Font.BOLD,15));
         add(lblrollno);
 
-        search = new JTextField();
-        search.setBounds(180, 100, 150, 30);
-        search.setFont(new Font("Tahoma", Font.BOLD, 18));
+        search= new JTextField();
+        search.setBounds(180,100,150,30);
+        search.setFont(new Font("Tahoma",Font.BOLD,18));
         add(search);
 
         // Buttons
@@ -49,52 +49,42 @@ public class DisplayMarks extends JFrame implements ActionListener {
         backbutton.addActionListener(this);
         add(backbutton);
 
-        table = new JTable();
-        table.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        table= new JTable();
+        table.setFont(new Font("Tahoma",Font.PLAIN,16));
 
-        JScrollPane jsp = new JScrollPane(table);
-        jsp.setBounds(0, 135, 1000, 310);
+        JScrollPane jsp= new JScrollPane(table);
+        jsp.setBounds(0,135,1000,310);
         add(jsp);
 
-        // Inserting the marks in table from the database
-        try {
-            Conn con = new Conn();
-            ResultSet rs = con.s.executeQuery("select * from student");
+        //inserting the marks in table from database
+        try{
+            Conn con =new Conn();
+            ResultSet rs=con.s.executeQuery("select * from student");
             table.setModel(DbUtils.resultSetToTableModel(rs));
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
 
-        // Adding the MouseListener to click the table and auto-fill roll number
+        //adding the mouselistner to click the table then it auto filled in rolno
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int row = table.getSelectedRow();
-                // Ensure correct column index for roll number
-                // Assuming roll number is the first column (index 0)
-                search.setText(table.getModel().getValueAt(row, 2).toString());
+                search.setText(table.getModel().getValueAt(row,2).toString());
             }
         });
-
         setVisible(true);
     }
-
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == resultbutton) {
-            try {
-                // Validate if search field is not empty
-                if (search.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Please select or enter a Roll Number.");
-                    return;
-                }
-
-                // Call the Marks class with the roll number
+    public void actionPerformed(ActionEvent ae){
+        if (ae.getSource()==resultbutton){
+            try{
+                //setVisible(false);
                 new Marks(search.getText());
-            } catch (Exception e) {
+            }catch (Exception e){
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error fetching results. Please check the roll number.");
             }
-        } else if (ae.getSource() == backbutton) {
+
+        } else if (ae.getSource()==backbutton) {
             setVisible(false);
         }
     }
