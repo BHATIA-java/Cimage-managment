@@ -98,10 +98,12 @@ public class Project extends JFrame implements ActionListener {
 //faculty information   menu
         JMenuItem updatefacultyinfo = new JMenuItem("Update Faculty Information");
         facultyinfo.setBackground(Color.WHITE);
+        updatefacultyinfo.addActionListener(this);
         updateInformation.add(updatefacultyinfo);
 //student information   menu
         JMenuItem updatestudentinfo = new JMenuItem("Update Student Information");
         updatestudentinfo.setBackground(Color.WHITE);
+        updatestudentinfo.addActionListener(this);
         updateInformation.add(updatestudentinfo);
 
 
@@ -158,7 +160,7 @@ public void actionPerformed(ActionEvent ae) {
         }
         else if (msg.equals("Calculator")){
                 try{
-                        Runtime.getRuntime().exec("calc.exe");
+                        Runtime.getRuntime().exec("calculator.exe");
                 }catch(Exception E){
                     E.printStackTrace();
 
@@ -181,7 +183,6 @@ public void actionPerformed(ActionEvent ae) {
         } else if (msg.equals("View Student Details")) {
             new StudentDetails();
         } else if (msg.equals("Faculty Leave")) {
-            System.out.println("faculty leave clicked");
             new TeacherLeave();
         } else if (msg.equals("Student Leave")) {
             new StudentLeave();
@@ -189,6 +190,10 @@ public void actionPerformed(ActionEvent ae) {
         new TeacherLeaveDetails();
         } else if (msg.equals("Student Leave Details")) {
         new StudentLeaveDetails();
+        }else if (msg.equals("Update Faculty Information")) {
+            new UpdateTeacherDetails();
+        } else if (msg.equals("Update Student Information")) {
+            new UpdateStudentDetails();
         }
 
 

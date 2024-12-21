@@ -66,7 +66,7 @@ public class Login extends JFrame implements ActionListener {
             String password = new String(tfpassword.getPassword());
     
             String query = "SELECT * FROM login WHERE username = '" + username + "' AND password = '" + password + "'";
-            System.out.println("Query: " + query);
+            //System.out.println("Query: " + query);
     
             try {
                 Conn c = new Conn();
