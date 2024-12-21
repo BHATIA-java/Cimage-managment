@@ -81,12 +81,14 @@ public class Project extends JFrame implements ActionListener {
         JMenu exam  = new JMenu("Examinations");//creating the menu that going to show on menu bar
         exam.setForeground(Color.BLUE);//setting the color of menu
         menuBar.add(exam);//adding menu to the menu bar
-//Examaination Details   menuItem
-        JMenuItem examinationdetails = new JMenuItem("  Examination Details");//creatin menu item that show on menu
-        examinationdetails.setBackground(Color.WHITE);//setting the color of faculty leave Details
-        exam.add(examinationdetails);//adding menuitem to the menu
+//
+//  Enter Marks menuItem
+        JMenuItem entermarks = new JMenuItem("Enter Marks");//creatin menu item that show on menu
+        entermarks.setBackground(Color.WHITE);//setting the color of faculty leave Details
+        entermarks.addActionListener(this);
+        exam.add(entermarks);//adding menuitem to the menu
 //Examination Result  menuItem
-        JMenuItem examresult = new JMenuItem("  Exam Result");//creatin menu item that show on menu
+        JMenuItem examresult = new JMenuItem("Exam Result");//creatin menu item that show on menu
         examresult.setBackground(Color.WHITE);//setting the color of student leave Detials
         exam.add(examresult);//adding menuitem to the menu
 
@@ -194,10 +196,12 @@ public void actionPerformed(ActionEvent ae) {
             new UpdateTeacherDetails();
         } else if (msg.equals("Update Student Information")) {
             new UpdateStudentDetails();
+        } else if (msg.equals("Enter Marks")) {
+            new EnterMarks();
         }
 
 
-}
+    }
 
     public static void main(String[] args) {
         new Project();

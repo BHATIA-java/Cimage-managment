@@ -25,7 +25,7 @@ public class EnterMarks extends JFrame  implements ActionListener {
         add(image);
 
         // Main heading
-        JLabel heading = new JLabel("Update Student Details");
+        JLabel heading = new JLabel("Enter Marks");
         heading.setBounds(100, 10, 500, 50);
         heading.setFont(new Font("Tahoma", Font.BOLD, 30));
         add(heading);
@@ -144,9 +144,22 @@ public class EnterMarks extends JFrame  implements ActionListener {
 
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource()==submitbutton){
+            try{
+                Conn con=new Conn();
+                String query1="insert into subject values('"+cRollNo.getSelectedItem()+"','"+cSemester.getSelectedItem()+"','"+tfsub1.getText()+"','"+tfsub2.getText()+"','"+tfsub3.getText()+"','"+tfsub4.getText()+"','"+tfsub5.getText()+"')";
+                String query2="insert into marks values('"+cRollNo.getSelectedItem()+"','"+cSemester.getSelectedItem()+"','"+tfmarks1.getText()+"','"+tfmarks2.getText()+"','"+tfmarks3.getText()+"','"+tfmarks4.getText()+"','"+tfmarks5.getText()+"')";
 
+                con.s.executeUpdate(query1);
+                con.s.executeUpdate(query2);
+
+                JOptionPane.showMessageDialog(null,"Marks inserted Successfully.");
+                setVisible(false);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         } else if (ae.getSource()==backbutton) {
-
+            setVisible(false);
         }
     }
 
