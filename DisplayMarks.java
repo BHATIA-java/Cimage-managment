@@ -78,7 +78,7 @@ public class DisplayMarks extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
         if (ae.getSource()==resultbutton){
             try{
-                //setVisible(false);
+                setVisible(false);
                 new Marks(search.getText());
             }catch (Exception e){
                 e.printStackTrace();

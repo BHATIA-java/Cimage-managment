@@ -90,6 +90,7 @@ public class Project extends JFrame implements ActionListener {
 //Examination Result  menuItem
         JMenuItem examresult = new JMenuItem("Exam Result");//creatin menu item that show on menu
         examresult.setBackground(Color.WHITE);//setting the color of student leave Detials
+        examresult.addActionListener(this);
         exam.add(examresult);//adding menuitem to the menu
 
 
@@ -116,6 +117,7 @@ public class Project extends JFrame implements ActionListener {
 //faculty information   menu
         JMenuItem feestructure = new JMenuItem("Fee Structure");
         feestructure.setBackground(Color.white);
+        feestructure.addActionListener(this);
         fee.add(feestructure);
 //student information   menu
         JMenuItem feeform = new JMenuItem("Fee Form");
@@ -137,9 +139,19 @@ public class Project extends JFrame implements ActionListener {
         calculator.addActionListener(this);
         utility.add(calculator);
 
+        //About menu
+        JMenu about = new JMenu("About");//creating the menu that going to show on menu bar
+        about.setForeground(Color.blue);
+        menuBar.add(about);
+//About   menu
+        JMenuItem abt = new JMenuItem("About");
+        abt.setBackground(Color.WHITE);
+        abt.addActionListener(this);
+        about.add(abt);
+
 //Exit menu
         JMenu exit = new JMenu("Exit");//creating the menu that going to show on menu bar
-        exit.setForeground(Color.blue);
+        exit.setForeground(Color.red);
         menuBar.add(exit);
 //faculty information   menu
         JMenuItem ex = new JMenuItem("Exit");
@@ -162,7 +174,7 @@ public void actionPerformed(ActionEvent ae) {
         }
         else if (msg.equals("Calculator")){
                 try{
-                        Runtime.getRuntime().exec("calculator.exe");
+                        Runtime.getRuntime().exec("calc.exe");
                 }catch(Exception E){
                     E.printStackTrace();
 
@@ -198,6 +210,14 @@ public void actionPerformed(ActionEvent ae) {
             new UpdateStudentDetails();
         } else if (msg.equals("Enter Marks")) {
             new EnterMarks();
+        }else if(msg.equals("Exam Result")){
+            new DisplayMarks();
+        }else if(msg.equals("Fee Structure")){
+            new FeeStructure();
+        } else if (msg.equals("About")) {
+            new About();
+        }else if (msg.equals("Fee Form")) {
+            new StudentFeeForm();
         }
 
 

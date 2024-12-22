@@ -125,7 +125,7 @@ public class AddStudent extends JFrame implements ActionListener {
         lblbranch.setBounds(450, 350, 150, 30);
         add(lblbranch);
 
-        String[] branches = {"Computer Science", "Mechanical", "Electrical", "Civil", "Electronics","IT"};
+        String[] branches = {"Computer Science", "Mechanical", "Electrical", "Civil", "Electronics","IT","Other"};
         branchDropdown = new JComboBox(branches);
         branchDropdown.setBounds(600, 350, 200, 30);
         add(branchDropdown);

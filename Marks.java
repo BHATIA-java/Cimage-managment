@@ -2,10 +2,13 @@ package university_managment_system;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
-public class Marks extends JFrame {
+public class Marks extends JFrame implements ActionListener {
     String rollno;
+    JButton backbutton;
 
     Marks(String rollno){
         this. rollno= rollno;
@@ -28,7 +31,7 @@ public class Marks extends JFrame {
         add(subheading);
 
         // rollno label
-        JLabel lblrollno = new JLabel("Roll Number "+rollno);
+        JLabel lblrollno = new JLabel("Roll Number:-"+rollno);
         lblrollno.setBounds(60, 100, 500, 40);
         lblrollno.setFont(new Font("Tahoma", Font.PLAIN, 17));
         add(lblrollno);
@@ -77,15 +80,27 @@ public class Marks extends JFrame {
                 lblsubject3.setText(lblsubject3.getText()+"--------"+rs2.getString("marks3"));
                 lblsubject4.setText(lblsubject4.getText()+"--------"+rs2.getString("marks4"));
                 lblsubject5.setText(lblsubject5.getText()+"--------"+rs2.getString("marks5"));
-                lblsemester.setText("semester"+rs2.getString("semester"));
+                lblsemester.setText("Semester:- "+rs2.getString("semester"));
 
 
             }
         }catch (Exception e){
             e.printStackTrace();
         }
+        backbutton = new JButton("Back");
+        backbutton.setBounds(180, 400, 120, 30);
+        backbutton.setBackground(Color.black);
+        backbutton.setForeground(Color.WHITE);
+        backbutton.addActionListener(this);
+        add(backbutton);
 
         setVisible(true);
+    }
+    public void actionPerformed(ActionEvent ae){
+        if (ae.getSource()==backbutton){
+            setVisible(false);
+            new DisplayMarks();
+        }
     }
 
 
