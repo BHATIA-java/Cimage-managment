@@ -13,7 +13,7 @@ public class About extends JFrame {
 
         //adding image to the login screen
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/about.jpg"));
-        Image icon2 = icon.getImage().getScaledInstance(300, 200, Image.SCALE_DEFAULT);
+        Image icon2 = icon.getImage().getScaledInstance(250, 200, Image.SCALE_DEFAULT);
         ImageIcon icon3=new ImageIcon(icon2);//converting the image into an imageicon to display on the label
         JLabel image=new JLabel(icon3);// pasting that image into label and displaying
         image.setBounds(350,10,300,200);
